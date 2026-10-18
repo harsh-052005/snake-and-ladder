@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐍 Snake & Ladder 🪜</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+</head>
+<body>
+  <div class="app">
+    <!-- ================= SETUP SCREEN ================= -->
+    <section id="setup-screen" class="screen setup-screen">
+      <div class="setup-card">
+        <h1 class="title">
+          <span class="title-snake">🐍</span>
+          Snake <span class="amp">&amp;</span> Ladder
+          <span class="title-ladder">🪜</span>
+        </h1>
+        <p class="subtitle">A classic board game, reimagined. Roll the dice and race to 100!</p>
+
+        <div class="player-count">
+          <label>Number of players</label>
+          <div class="count-buttons" id="count-buttons">
+            <button type="button" class="count-btn" data-count="2">2</button>
+            <button type="button" class="count-btn active" data-count="3">3</button>
+            <button type="button" class="count-btn" data-count="4">4</button>
+          </div>
+        </div>
+
+        <div class="players-setup" id="players-setup">
+          <!-- Player setup rows injected by JS -->
+        </div>
+
+        <button type="button" id="start-btn" class="btn btn-primary btn-start">
+          🎲 Start Game
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= GAME SCREEN ================= -->
+    <section id="game-screen" class="screen game-screen hidden">
+      <header class="game-header">
+        <h1 class="game-title">🐍 Snake &amp; Ladder 🪜</h1>
+        <div class="header-actions">
+          <button type="button" id="mute-btn" class="icon-btn" title="Mute / Unmute" aria-label="Mute or unmute">🔊</button>
+          <button type="button" id="new-game-btn" class="btn btn-ghost">New Game</button>
+          <button type="button" id="restart-btn" class="btn btn-ghost">Restart</button>
+        </div>
+      </header>
+
+      <div class="game-layout">
+        <!-- Board -->
+        <div class="board-wrap">
+          <div id="board" class="board" aria-label="Game board"></div>
+          <svg id="overlay" class="overlay" preserveAspectRatio="none"></svg>
+          <div id="tokens-layer" class="tokens-layer"></div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="panel turn-panel">
+            <div class="turn-label">Current turn</div>
+            <div id="current-player" class="current-player">
+              <span class="dot"></span>
+              <span class="name">Player 1</span>
+            </div>
+          </div>
+
+          <div class="panel dice-panel">
+            <div id="dice" class="dice" aria-live="polite">
+              <div class="pip-face" data-face="1"></div>
+            </div>
+            <button type="button" id="roll-btn" class="btn btn-primary btn-roll">Roll Dice</button>
+            <div id="message" class="message"></div>
+          </div>
+
+          <div class="panel scoreboard-panel">
+            <h3 class="panel-title">🏆 Scoreboard</h3>
+            <ul id="scoreboard" class="scoreboard"></ul>
+          </div>
+
+          <div class="panel log-panel">
+            <h3 class="panel-title">📜 Activity Log</h3>
+            <ul id="log" class="log"></ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ================= WIN MODAL ================= -->
+    <div id="win-modal" class="modal hidden">
+      <div class="confetti" id="confetti"></div>
+      <div class="modal-card">
+        <div class="trophy">🏆</div>
+        <h2 class="win-title">We have a winner!</h2>
+        <p id="winner-name" class="winner-name">Player 1</p>
+        <div class="modal-actions">
+          <button type="button" id="play-again-btn" class="btn btn-primary">Play Again</button>
+          <button type="button" id="win-new-game-btn" class="btn btn-ghost">New Game</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
